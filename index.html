@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muhammed Ahmed — Data Analyst</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:opsz,wght@4..8,300;4..8,400;4..8,500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0e0c09;
+      --bg-card:     #111008;
+      --bg-card-h:   #17140a;
+      --bg-subtle:   #0b0a07;
+      --border:      #2a2418;
+      --border-h:    #3a3020;
+      --amber:       #e8a830;
+      --amber-dim:   #1a1508;
+      --amber-b:     #3a2e1a;
+      --green:       #4daa60;
+      --green-dim:   #0a1a0e;
+      --blue:        #5b96d0;
+      --text-p:      #e8e0d0;
+      --text-s:      #8a7d6a;
+      --text-m:      #4a3f2e;
+      --mono:        'Syne', sans-serif;
+      --sans:        'Instrument Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text-p);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border-h); }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      height: 56px;
+      background: rgba(14,12,9,0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 0.5px solid var(--border);
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 15px; font-weight: 800;
+      color: var(--amber);
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+
+    .nav-logo em { color: var(--text-m); font-style: normal; }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 11px; font-weight: 600;
+      color: var(--text-m);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--amber); }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 1020px;
+      margin: 0 auto;
+      padding: 0 clamp(1.5rem, 5vw, 3rem);
+    }
+
+    section {
+      padding: 5rem 0;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 10px; font-weight: 600;
+      color: var(--amber);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+      display: flex; align-items: center; gap: 12px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1; height: 0.5px;
+      background: var(--border);
+    }
+
+    /* ── HERO ── */
+    #hero {
+      padding: 7rem 0 5rem;
+      border-bottom: 0.5px solid var(--border);
+      position: relative; overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute; top: -80px; right: -100px;
+      width: 460px; height: 460px;
+      background: radial-gradient(circle, rgba(232,168,48,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* available badge */
+    .avail-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--amber-dim);
+      border: 0.5px solid var(--amber-b);
+      color: var(--amber);
+      font-family: var(--mono);
+      font-size: 10px; font-weight: 600;
+      padding: 5px 14px;
+      border-radius: 20px;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.6rem;
+    }
+
+    .avail-dot {
+      width: 6px; height: 6px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.25; }
+    }
+
+    .hero-name {
+      font-family: var(--mono);
+      font-size: clamp(2.2rem, 5.5vw, 3.4rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-name .accent { color: var(--amber); }
+
+    .hero-sub {
+      font-family: var(--mono);
+      font-size: 11px; font-weight: 600;
+      color: var(--text-m);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-bio {
+      font-size: 14px;
+      color: var(--text-s);
+      max-width: 500px;
+      line-height: 1.9;
+      margin-bottom: 2rem;
+    }
+
+    .hero-bio strong { color: var(--text-p); font-weight: 500; }
+
+    .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--amber);
+      color: #0e0c09;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 4px;
+      font-family: var(--mono);
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .btn-primary:hover { opacity: 0.85; }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-s);
+      border: 0.5px solid var(--border-h);
+      padding: 10px 22px;
+      border-radius: 4px;
+      font-family: var(--mono);
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-ghost:hover { border-color: var(--amber); color: var(--amber); }
+
+    /* ── FADE IN ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fu  { opacity: 0; animation: fadeUp 0.5s ease forwards; }
+    .d1  { animation-delay: 0.05s; }
+    .d2  { animation-delay: 0.15s; }
+    .d3  { animation-delay: 0.25s; }
+    .d4  { animation-delay: 0.35s; }
+    .d5  { animation-delay: 0.45s; }
+
+    /* ── PROJECTS ── */
+    .filter-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 2rem; }
+
+    .filter-btn {
+      font-family: var(--mono);
+      font-size: 10px; font-weight: 600;
+      padding: 5px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      color: var(--text-m);
+      letter-spacing: 0.07em;
+      transition: all 0.2s;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--amber-dim);
+      border-color: var(--amber-b);
+      color: var(--amber);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 0.5px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 2px;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      padding: 1.4rem 1.3rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .project-card:hover   { background: var(--bg-card-h); }
+    .project-card.active  { background: #1a1508; }
+
+    .card-tool {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 9px; font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 2px;
+      margin-bottom: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .tool-tableau { background: #0a1a0e; border: 0.5px solid #1a3a1e; color: #4daa60; }
+    .tool-sql     { background: #0a1420; border: 0.5px solid #1a2e40; color: var(--blue); }
+    .tool-excel   { background: #0a1a0a; border: 0.5px solid #1a3a1a; color: #5cb85c; }
+
+    .project-card h3 {
+      font-family: var(--mono);
+      font-size: 13px; font-weight: 600;
+      color: var(--text-p);
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+
+    .project-card p {
+      font-size: 12px;
+      color: var(--text-m);
+      line-height: 1.65;
+      margin-bottom: 12px;
+    }
+
+    .card-cta {
+      font-family: var(--mono);
+      font-size: 10px; font-weight: 600;
+      color: var(--amber);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── DETAIL PANEL ── */
+    .detail-panel {
+      background: var(--bg-subtle);
+      border: 0.5px solid var(--border);
+      border-radius: 6px;
+      padding: 1.8rem 2rem;
+      margin-top: 12px;
+      display: none;
+    }
+
+    .detail-panel.visible {
+      display: block;
+      animation: fadeUp 0.2s ease;
+    }
+
+    .detail-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 1.4rem;
+    }
+
+    .detail-title {
+      font-family: var(--mono);
+      font-size: 14px; font-weight: 700;
+      color: #fff;
+    }
+
+    .detail-close {
+      background: none;
+      border: 0.5px solid var(--border);
+      color: var(--text-m);
+      width: 28px; height: 28px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .detail-close:hover { border-color: var(--border-h); color: var(--text-p); }
+
+    .detail-tabs {
+      display: flex; gap: 0;
+      border-bottom: 0.5px solid var(--border);
+      margin-bottom: 1.4rem;
+    }
+
+    .dtab {
+      font-family: var(--mono);
+      font-size: 10px; font-weight: 600;
+      padding: 7px 16px;
+      cursor: pointer;
+      color: var(--text-m);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      border-bottom: 1.5px solid transparent;
+      margin-bottom: -0.5px;
+      transition: color 0.2s;
+    }
+
+    .dtab.active { color: var(--amber); border-bottom-color: var(--amber); }
+    .dtab:hover  { color: var(--text-s); }
+
+    .tab-content        { display: none; }
+    .tab-content.active { display: block; }
+
+    .tab-content p {
+      font-size: 13px;
+      color: var(--text-s);
+      line-height: 1.9;
+      margin-bottom: 1rem;
+    }
+
+    .tab-links { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    .tab-link {
+      font-family: var(--mono);
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 5px 14px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background 0.2s;
+      text-decoration: none;
+    }
+
+    .tab-link-primary {
+      border: 0.5px solid var(--amber-b);
+      color: var(--amber);
+    }
+
+    .tab-link-primary:hover { background: var(--amber-dim); }
+
+    .tab-link-secondary {
+      border: 0.5px solid var(--border);
+      color: var(--text-m);
+    }
+
+    .tab-link-secondary:hover { border-color: var(--border-h); color: var(--text-s); }
+
+    .insights-list { list-style: none; margin-bottom: 1rem; }
+
+    .insights-list li {
+      font-size: 13px;
+      color: var(--text-s);
+      padding: 8px 0 8px 16px;
+      border-bottom: 0.5px solid var(--border);
+      position: relative;
+      line-height: 1.65;
+    }
+
+    .insights-list li::before {
+      content: '↗';
+      position: absolute; left: 0;
+      color: var(--amber);
+      font-family: var(--mono);
+      font-size: 10px; font-weight: 700;
+    }
+
+    .insight-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 1rem; }
+
+    .insight-tag {
+      font-family: var(--mono);
+      font-size: 9px; font-weight: 600;
+      padding: 3px 9px;
+      background: var(--amber-dim);
+      border: 0.5px solid var(--amber-b);
+      color: var(--amber);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .process-steps { display: flex; flex-direction: column; gap: 8px; margin-bottom: 1.2rem; }
+
+    .process-step {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 13px; color: var(--text-s);
+    }
+
+    .step-num {
+      font-family: var(--mono);
+      font-size: 9px; font-weight: 700;
+      color: var(--amber);
+      background: var(--amber-dim);
+      border: 0.5px solid var(--amber-b);
+      width: 22px; height: 22px;
+      border-radius: 3px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 1px;
+    }
+
+    .mindmap-box {
+      background: var(--bg-card);
+      border: 0.5px dashed var(--border-h);
+      border-radius: 4px;
+      padding: 2rem;
+      text-align: center;
+      color: var(--text-m);
+      font-family: var(--mono);
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 1rem;
+    }
+
+    .mindmap-box small {
+      display: block;
+      font-size: 10px;
+      color: #2a2010;
+      margin-top: 6px;
+      font-weight: 400;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    /* ── ROADMAP ── */
+    .roadmap { display: flex; flex-direction: column; max-width: 580px; }
+
+    .rm-item { display: flex; gap: 1.2rem; }
+
+    .rm-spine {
+      display: flex; flex-direction: column;
+      align-items: center;
+      width: 18px; flex-shrink: 0;
+    }
+
+    .rm-dot {
+      width: 11px; height: 11px;
+      border-radius: 2px;
+      flex-shrink: 0; margin-top: 4px;
+    }
+
+    .rm-connector {
+      width: 1px; flex: 1;
+      min-height: 30px; margin: 4px 0;
+    }
+
+    .rm-body { padding-bottom: 26px; }
+
+    .rm-title {
+      font-family: var(--mono);
+      font-size: 13px; font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .rm-desc { font-size: 12px; color: var(--text-m); line-height: 1.65; }
+
+    .rm-status {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 9px; font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 2px;
+      margin-left: 8px;
+      vertical-align: middle;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* done */
+    .rm-done .rm-dot       { background: var(--amber); }
+    .rm-done .rm-connector { background: var(--amber-b); }
+    .rm-done .rm-title     { color: var(--text-p); }
+    .rm-done .rm-status    { background: var(--amber-dim); color: var(--amber); border: 0.5px solid var(--amber-b); }
+
+    /* active */
+    .rm-active .rm-dot       { background: var(--green); box-shadow: 0 0 0 3px var(--green-dim); }
+    .rm-active .rm-connector { background: var(--border); }
+    .rm-active .rm-title     { color: var(--green); }
+    .rm-active .rm-status    { background: var(--green-dim); color: var(--green); border: 0.5px solid #1a3a1e; }
+
+    /* next */
+    .rm-next .rm-dot       { background: transparent; border: 1px solid var(--border-h); }
+    .rm-next .rm-connector { background: var(--border); }
+    .rm-next .rm-title     { color: var(--text-m); }
+    .rm-next .rm-status    { background: var(--bg-card); color: var(--text-m); border: 0.5px solid var(--border); }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .avatar-wrap { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+
+    .avatar {
+      width: 82px; height: 82px;
+      border-radius: 4px;
+      background: var(--amber-dim);
+      border: 1.5px solid var(--amber-b);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono);
+      font-size: 22px; font-weight: 800;
+      color: var(--amber);
+      letter-spacing: 0.02em;
+    }
+
+    .avatar-loc {
+      font-family: var(--mono);
+      font-size: 9px; font-weight: 600;
+      color: var(--text-m);
+      text-align: center;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      line-height: 1.6;
+    }
+
+    .about-text p {
+      font-size: 14px;
+      color: var(--text-s);
+      line-height: 1.9;
+      margin-bottom: 1.4rem;
+    }
+
+    .about-text p strong { color: var(--text-p); font-weight: 500; }
+
+    .about-highlight {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-left: 2px solid var(--amber);
+      border-radius: 0 4px 4px 0;
+      padding: 12px 16px;
+      font-size: 13px;
+      color: var(--text-s);
+      margin-bottom: 1.4rem;
+      font-style: italic;
+      line-height: 1.75;
+    }
+
+    .skills-wrap { display: flex; gap: 6px; flex-wrap: wrap; }
+
+    .skill {
+      font-family: var(--mono);
+      font-size: 10px; font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 3px;
+      letter-spacing: 0.05em;
+    }
+
+    .skill-core     { background: var(--amber-dim); border: 0.5px solid var(--amber-b); color: var(--amber); }
+    .skill-learning { background: var(--green-dim); border: 0.5px solid #1a3a1e; color: var(--green); }
+    .skill-planned  { background: var(--bg-card); border: 0.5px solid var(--border); color: var(--text-m); }
+
+    /* ── CONTACT ── */
+    .contact-intro {
+      font-size: 14px;
+      color: var(--text-s);
+      max-width: 480px;
+      line-height: 1.9;
+      margin-bottom: 2.2rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 10px;
+      max-width: 600px;
+    }
+
+    .contact-card {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: 6px;
+      padding: 1.1rem 1.3rem;
+      text-decoration: none;
+      display: flex; align-items: center; gap: 14px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .contact-card:hover { border-color: var(--amber-b); background: var(--bg-card-h); }
+
+    .contact-icon {
+      width: 38px; height: 38px;
+      border-radius: 4px;
+      background: var(--amber-dim);
+      border: 0.5px solid var(--amber-b);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono);
+      font-size: 11px; font-weight: 700;
+      color: var(--amber);
+      flex-shrink: 0;
+    }
+
+    .contact-label { font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--text-p); }
+    .contact-sub   { font-family: var(--mono); font-size: 9px; color: var(--text-m); margin-top: 3px; letter-spacing: 0.04em; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 0;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+    }
+
+    footer p {
+      font-family: var(--mono);
+      font-size: 10px; font-weight: 600;
+      color: var(--text-m);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .avatar-wrap { flex-direction: row; justify-content: flex-start; }
+      .nav-links   { display: none; }
+      .cards-grid  { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a href="#hero" class="nav-logo">MA<em>_data</em></a>
+    <ul class="nav-links">
+      <li><a href="#projects">projects</a></li>
+      <li><a href="#learning">learning</a></li>
+      <li><a href="#about">about</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section id="hero">
+    <div class="container">
+      <div class="avail-badge fu d1">
+        <span class="avail-dot"></span>
+        available for opportunities
+      </div>
+      <h1 class="hero-name fu d2">
+        Muhammed<br>Ahmed<span class="accent">.</span>
+      </h1>
+      <p class="hero-sub fu d3">Data Analyst &nbsp;·&nbsp; Istanbul, TR</p>
+      <p class="hero-bio fu d4">
+        Turning raw data into decisions that <strong>actually make business sense</strong>.
+        With a background in sales and operations, I bring context to numbers —
+        not just charts. Specializing in <strong>Tableau, SQL & Excel</strong>,
+        currently expanding into Python and cloud analytics.
+      </p>
+      <div class="hero-btns fu d5">
+        <a href="#projects" class="btn-primary">View Projects</a>
+        <a href="#contact"  class="btn-ghost">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROJECTS ── -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-label">projects</div>
+
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterCards('all', this)">All</button>
+        <button class="filter-btn" onclick="filterCards('tableau', this)">Tableau</button>
+        <button class="filter-btn" onclick="filterCards('sql', this)">SQL</button>
+        <button class="filter-btn" onclick="filterCards('excel', this)">Excel</button>
+      </div>
+
+      <div class="cards-grid" id="cards-grid">
+
+        <!-- Card 1 — Cyclistic -->
+        <div class="project-card" data-tool="tableau" data-id="cyclistic" onclick="openDetail(this)">
+          <span class="card-tool tool-tableau">Tableau</span>
+          <h3>Cyclistic Bike Share — Rider Behavior Analysis</h3>
+          <p>Analyzing 5.7M rides to uncover behavioral differences between casual riders and annual members.</p>
+          <div class="card-cta">explore →</div>
+        </div>
+
+        <!-- Card 2 — IBM HR -->
+        <div class="project-card" data-tool="tableau" data-id="ibm" onclick="openDetail(this)">
+          <span class="card-tool tool-tableau">Tableau</span>
+          <h3>IBM HR — Employee Attrition Analysis</h3>
+          <p>Investigating why 16% of employees are leaving — and identifying management transitions as the core driver.</p>
+          <div class="card-cta">explore →</div>
+        </div>
+
+        <!-- Card 3 — Olist -->
+        <div class="project-card" data-tool="tableau" data-id="olist" onclick="openDetail(this)">
+          <span class="card-tool tool-tableau">Tableau</span>
+          <h3>Olist E-Commerce — Delivery & Review Score Analysis</h3>
+          <p>Exploring what drives low review scores across 99,441 orders on Brazil's largest e-commerce platform.</p>
+          <div class="card-cta">explore →</div>
+        </div>
+
+        <!-- Card 4 — WorkAdventures -->
+        <div class="project-card" data-tool="tableau" data-id="work" onclick="openDetail(this)">
+          <span class="card-tool tool-tableau">Tableau</span>
+          <h3>WorkAdventures — Sales & Profit Analysis 2020–2022</h3>
+          <p>Three-year sales performance analysis across 6 countries and 3 product categories.</p>
+          <div class="card-cta">explore →</div>
+        </div>
+
+        <!-- Card 5 — SQL -->
+        <div class="project-card" data-tool="sql" data-id="sql1" onclick="openDetail(this)">
+          <span class="card-tool tool-sql">SQL</span>
+          <h3>MySQL — Data Cleaning & Exploratory Analysis</h3>
+          <p>Three projects covering data cleaning, layoff trends, and auto sales analysis using MySQL.</p>
+          <div class="card-cta">explore →</div>
+        </div>
+
+        <!-- Card 6 — Excel -->
+        <div class="project-card" data-tool="excel" data-id="excel1" onclick="openDetail(this)">
+          <span class="card-tool tool-excel">Excel</span>
+          <h3>Excel — Auto Sales Data Cleaning</h3>
+          <p>Cleaned and standardized a raw auto sales dataset — fixed date formats, removed duplicates, and prepared data for analysis.</p>
+          <div class="card-cta">explore →</div>
+        </div>
+
+      </div><!-- /cards-grid -->
+
+      <!-- Detail panel -->
+      <div class="detail-panel" id="detail-panel">
+        <div class="detail-header">
+          <div class="detail-title" id="detail-title">Project Title</div>
+          <button class="detail-close" onclick="closeDetail()">✕</button>
+        </div>
+        <div class="detail-tabs">
+          <div class="dtab active" onclick="switchTab('overview', this)">Overview</div>
+          <div class="dtab"        onclick="switchTab('insights', this)">Key Insights</div>
+          <div class="dtab"        onclick="switchTab('process',  this)">Process</div>
+        </div>
+
+        <!-- Overview -->
+        <div class="tab-content active" id="tab-overview">
+          <p id="detail-overview-text"></p>
+          <div class="tab-links" id="detail-links"></div>
+        </div>
+
+        <!-- Insights -->
+        <div class="tab-content" id="tab-insights">
+          <ul class="insights-list" id="detail-insights-list"></ul>
+          <div class="insight-tags" id="detail-insight-tags"></div>
+        </div>
+
+        <!-- Process -->
+        <div class="tab-content" id="tab-process">
+          <div class="process-steps" id="detail-process-steps"></div>
+          <div id="detail-mindmap"></div>
+        </div>
+
+      </div><!-- /detail-panel -->
+    </div>
+  </section>
+
+  <!-- ── LEARNING ROADMAP ── -->
+  <section id="learning">
+    <div class="container">
+      <div class="section-label">learning roadmap</div>
+      <div class="roadmap">
+
+        <div class="rm-item rm-done">
+          <div class="rm-spine"><div class="rm-dot"></div><div class="rm-connector"></div></div>
+          <div class="rm-body">
+            <div class="rm-title">Tableau <span class="rm-status">completed</span></div>
+            <div class="rm-desc">4 dashboards across sales, HR and operations datasets. Published on Tableau Public.</div>
+          </div>
+        </div>
+
+        <div class="rm-item rm-done">
+          <div class="rm-spine"><div class="rm-dot"></div><div class="rm-connector"></div></div>
+          <div class="rm-body">
+            <div class="rm-title">SQL <span class="rm-status">completed</span></div>
+            <div class="rm-desc">Joins, aggregations, CTEs, window functions, and subqueries on real datasets.</div>
+          </div>
+        </div>
+
+        <div class="rm-item rm-done">
+          <div class="rm-spine"><div class="rm-dot"></div><div class="rm-connector"></div></div>
+          <div class="rm-body">
+            <div class="rm-title">Excel <span class="rm-status">completed</span></div>
+            <div class="rm-desc">Data cleaning, pivot tables, VLOOKUP / INDEX-MATCH, and dynamic charts for reporting.</div>
+          </div>
+        </div>
+
+        <div class="rm-item rm-active">
+          <div class="rm-spine"><div class="rm-dot"></div><div class="rm-connector"></div></div>
+          <div class="rm-body">
+            <div class="rm-title">Python & Pandas <span class="rm-status">in progress</span></div>
+            <div class="rm-desc">Learning data manipulation, EDA, and automating reporting workflows.</div>
+          </div>
+        </div>
+
+        <div class="rm-item rm-next">
+          <div class="rm-spine"><div class="rm-dot"></div><div class="rm-connector"></div></div>
+          <div class="rm-body">
+            <div class="rm-title">AWS <span class="rm-status">planned</span></div>
+            <div class="rm-desc">S3, Glue, Athena — building cloud data pipelines for large-scale analytics.</div>
+          </div>
+        </div>
+
+        <div class="rm-item rm-next">
+          <div class="rm-spine"><div class="rm-dot"></div></div>
+          <div class="rm-body">
+            <div class="rm-title">Azure <span class="rm-status">planned</span></div>
+            <div class="rm-desc">Azure Data Factory and Synapse Analytics for enterprise data workflows.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section id="about">
+    <div class="container">
+      <div class="section-label">about me</div>
+      <div class="about-grid">
+        <div class="avatar-wrap">
+          <img src="images/profile.png" alt="Muhammed Ahmed" style="width:82px;height:82px;border-radius:50%;border:1.5px solid var(--amber-b);object-fit:cover;" />
+          <div class="avatar-loc">Istanbul<br>Turkiye</div>
+        </div>
+        <div class="about-text">
+          <p>
+            I'm a <strong>data analyst</strong> based in Istanbul with a background in sales and operations.
+            After spending 3–4 years working in sales, I realised that the most impactful decisions
+            I could make — and help others make — were driven by data, not gut feeling.
+          </p>
+          <div class="about-highlight">
+            "I don't just know how to build a dashboard — I know what a sales manager
+            actually needs to see on one."
+          </div>
+          <p>
+            I've completed 4 Tableau projects, practiced SQL from basic joins to window functions,
+            and built operational reports in Excel. Currently learning Python and Pandas to automate
+            the analysis work I used to do manually — and heading towards cloud analytics with AWS and Azure.
+          </p>
+          <div class="skills-wrap">
+            <span class="skill skill-core">Tableau</span>
+            <span class="skill skill-core">SQL</span>
+            <span class="skill skill-core">Excel</span>
+            <span class="skill skill-learning">Python / Pandas ↗</span>
+            <span class="skill skill-planned">AWS</span>
+            <span class="skill skill-planned">Azure</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-label">contact</div>
+      <p class="contact-intro">
+        Open to junior analyst roles, freelance projects, or just connecting with
+        people who love data. Feel free to reach out through any of these.
+      </p>
+      <div class="contact-grid">
+        <a href="https://www.linkedin.com/in/muhammed-ahm3d/" target="_blank" class="contact-card">
+          <div class="contact-icon">in</div>
+          <div>
+            <div class="contact-label">LinkedIn</div>
+            <div class="contact-sub">linkedin.com/in/muhammed-ahm3d/</div>
+          </div>
+        </a>
+        <a href="https://github.com/MuhDataAnalyst?tab=repositories" target="_blank" class="contact-card">
+          <div class="contact-icon">gh</div>
+          <div>
+            <div class="contact-label">GitHub</div>
+            <div class="contact-sub">github.com/MuhDataAnalyst</div>
+          </div>
+        </a>
+        <a href="https://public.tableau.com/app/profile/muh.ahm3d" target="_blank" class="contact-card">
+          <div class="contact-icon">tb</div>
+          <div>
+            <div class="contact-label">Tableau Public</div>
+            <div class="contact-sub">View all 4 dashboards</div>
+          </div>
+        </a>
+        <a href="mailto:muhamed.ahm3d@gmail.com" class="contact-card">
+          <div class="contact-icon">@</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-sub">muhamed.ahm3d@gmail.com</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <div class="container">
+    <footer>
+      <p>© 2026 Muhammed Ahmed — Istanbul, Turkiye</p>
+      <p>Built with HTML · Hosted on GitHub Pages</p>
+    </footer>
+  </div>
+
+  <script>
+
+    // ── PROJECT DATA ──
+    const projects = {
+
+      cyclistic: {
+        title: 'Cyclistic Bike Share — Rider Behavior Analysis',
+        overview:'A Chicago bike share company with one question built into the dataset: how do casual riders and annual members use bikes differently, and how can marketing convert casuals to members? The analysis covered 5.7 million rides across ride duration, day of week, time of day, and seasonal patterns.',
+        tableauLink: 'https://public.tableau.com/app/profile/muh.ahm3d/viz/CyclisticBikeShareProject_17780101383230/Dashboard1',
+        githubLink: null,
+        insights: [
+          'Casual riders average 32 minutes per ride vs 13 minutes for members — 2.4x longer, confirming leisure use not commuting.',
+          'Members peak Monday–Wednesday and spike at 7–8am and 5pm — classic commute pattern. Casuals peak on weekends with afternoon-only spikes.',
+          'Casual usage drops to near zero in January–February, while members maintain consistent base usage year-round — casuals are fair weather leisure riders.',
+          'July is peak casual month at 442,056 rides — 24x more than January. Members\' summer peak is only 4x their winter baseline.',
+          'Marketing should target casuals in March–April before summer season starts, with weekend-focused messaging about leisure value — not commuting benefits.'
+        ],
+        tags: ['rider behavior', 'conversion analysis', 'seasonality', 'commute patterns'],
+        process: [
+          'Built ride duration as a calculated field: (ended_at - started_at) × 1440 to convert from Tableau\'s default day fractions to readable minutes.',
+          'Extracted hour of day and day of week from the timestamp to analyze behavioral patterns by time.',
+          'Compared Member vs Casual across 4 dimensions — duration, weekday pattern, hourly pattern, monthly pattern — each confirming the same leisure vs commuter story.',
+          'The morning commute spike at 7–8am appearing only in members was the clearest single visual confirmation of the commuter theory.',
+          'Used orange vs gray color coding consistently across all charts to make the Member vs Casual comparison immediate.'
+        ],
+        mindmap: 'cyclistic-mindmap.png'
+      },
+
+      ibm: {
+        title: 'IBM HR — Employee Attrition Analysis',
+        overview: 'IBM HR dataset with 35 variables across 1,470 employees. The question was straightforward: why are people leaving? I expected to find disengaged or underpaid employees. Instead I found the opposite — the company was losing its most engaged people, and the pattern pointed directly at management transitions as the main cause.',
+        tableauLink: 'https://public.tableau.com/app/profile/muh.ahm3d/viz/IMBProject/Dashboard2',
+        githubLink: null,
+        insights: [
+          '16.1% attrition rate — 237 of 1,470 employees leaving, above the typical industry range.',
+          '60% of leavers were Entry Level (Job Level 1) — junior employees are the retention problem, not senior staff.',
+          '52.7% of leavers had HIGH job involvement — the company is losing engaged employees, not disengaged ones. This was the most surprising finding.',
+          '73 employees left at 0 years in current role, 85 at 0 years with same manager — pointing to a management transition problem for new employees.',
+          '28.6% of leavers left at exactly 2 years in role — strong pattern suggesting missed promotion expectations.',
+          'Salary was ruled out as a primary driver — employees who left earned similar salaries to those who stayed at the same job level.'
+        ],
+        tags: ['hr analytics', 'attrition', 'management impact', 'retention strategy'],
+        process: [
+          'Explored 35 variables and immediately identified useless columns — EmployeeCount always 1, StandardHours fixed, Over18 same for all. Dropped those early.',
+          'Identified salary confusion in the dataset — DailyRate, HourlyRate, MonthlyRate do not relate mathematically. Used MonthlyIncome only after confirming with Kaggle community discussions.',
+          'Converted satisfaction rating columns from measures to dimensions so I could compare attrition rates across each rating level properly.',
+          'Caught a composition bias trap — high involvement employees looked like the biggest leavers by raw count, but proportional analysis showed low involvement employees leave at 2.6x the rate.',
+          'The 0-years finding came from combining YearsInCurrentRole with YearsWithCurrentManager — neither told the story alone, combined they revealed the management pattern.'
+        ],
+        mindmap: 'ibm-mindmap.png'
+      },
+
+      olist: {
+        title: 'Olist E-Commerce — Delivery & Review Score Analysis',
+        overview: 'A Brazilian e-commerce platform with 9 connected tables. The manager complaint was simple: review scores are dropping. I connected the delivery data to review scores and found the answer was not just late deliveries — the bigger problem was that estimated delivery times were set at 2x the actual delivery time, creating customer anxiety before the order even shipped.',
+        tableauLink: 'https://public.tableau.com/app/profile/muh.ahm3d/viz/Olistreadyfortableau/Dashboard2',
+        githubLink: null,
+        insights: [
+          '8% of orders arrived late — those orders averaged 2.5 review score vs 4.2 for on-time orders.',
+          'Most orders arrive 10–15 days before the estimated date — meaning estimates are roughly 2x too long.',
+          'Low-scoring orders consumed almost the entire estimated delivery window, even when delivered on time — customers waited unnecessarily long because of inflated estimates.',
+          'Approval delays affected 10% of orders, adding frustration before delivery even started. But even 0-delay orders got low scores — proving multiple factors compound the problem.'
+        ],
+        tags: ['e-commerce', 'delivery analysis', 'customer satisfaction', 'regional performance'],
+        process: [
+          'Connected 9 tables using Tableau relationships, with Returns data requiring careful handling to avoid inflating order counts.',
+          'Built a Delivery Gap calculated field (actual delivery minus estimated delivery) — negative values mean early, positive means late.',
+          'Discovered that 3,000+ null delivery values were explainable — cancelled orders, in-transit shipments, not data errors.',
+          'Filtered to low review scores only (3 and under) and found those orders consumed almost all of the estimated window — the insight that tied everything together.',
+        ],
+        mindmap: 'olist-mindmap.png'
+      },
+
+      work: {
+        title: 'WorkAdventures — Sales & Profit Analysis 2020–2022',
+        overview: 'A sporting goods company with sales data split across 3 separate yearly files — 2020, 2021, 2022. First challenge was unioning the files cleanly in Tableau and building a Revenue calculated field from scratch since no direct revenue column existed. Three CEO-level questions drove the analysis: are we growing, which markets are performing, and are our products profitable?',
+        tableauLink: 'https://public.tableau.com/app/profile/muh.ahm3d/viz/WorkAdventuresProject/Dashboard1',
+        githubLink: null,
+        insights: [
+          'Revenue grew 45.58% from 2020 to 2021. By mid-2022 the company had already matched almost 100% of full-year 2021 revenue — strong growth trajectory.',
+          'US and Australia together represent 60% of total revenue. UK and Germany show potential but are underdeveloped markets.',
+          'Canada dropped 28% in 2021 and only partially recovered with 10% growth in 2022 — still below 2020 baseline. Needs marketing investigation.',
+          'Bikes dominate at over 90% of category profit. Accessories and Clothing grew 23% in 6 months of 2022 — worth increased marketing attention.',
+          'Component category had zero effective sales — either a new category being introduced or one being phased out.'
+        ],
+        tags: ['sales analysis', 'profit margins', 'regional performance', 'product categories'],
+        process: [
+          'Discovered the 3 sales files had inconsistent column names — solved by unioning them in Tableau instead of using separate relationships.',
+          'Built Revenue as a calculated field: Order Quantity × Product Price, since no direct revenue column existed in the dataset.',
+          'Used Quick Table Calculation — Percent Difference to show year-over-year growth rate without writing complex LOD formulas.',
+          'Added a map visualization for geographic sales distribution — first time using geographic viz in the portfolio.',
+          'Canada\'s partial recovery pattern was found by checking growth rate year-over-year rather than just absolute numbers.'
+        ],
+        mindmap: 'work-mindmap.png'
+      },
+
+      sql1: {
+        title: 'MySQL — Data Cleaning & Exploratory Analysis',
+        overview: 'A collection of three SQL projects built in MySQL Workbench. Covers the full analyst workflow — cleaning raw data, standardizing inconsistent records, and running exploratory analysis to extract patterns and insights from real-world datasets.',
+        tableauLink: null,
+        githubLink: 'https://github.com/MuhDataAnalyst/MySQL-projects/tree/main',
+        insights: [
+          'Data Cleaning (Layoffs dataset) — removed duplicates using ROW_NUMBER(), filled missing industry values via self-joins, and standardized country and date fields.',
+          'Layoff EDA — identified top companies and countries by total layoffs, built a monthly rolling total using CTEs, and ranked top 5 companies per year using DENSE_RANK().',
+          'Auto Sales EDA — found that shipped orders account for ~85% of total revenue, calculated cancellation rates by country, and analyzed monthly revenue trends across 3 years.',
+          'Key SQL skills used: window functions, CTEs, CASE statements, joins, aggregations, and date formatting.'
+        ],
+        tags: ['data cleaning', 'EDA', 'window functions', 'CTEs', 'aggregations'],
+        process: [
+          'Created working copies of raw tables before any cleaning to preserve original data.',
+          'Used ROW_NUMBER() with PARTITION BY to detect and remove duplicate records.',
+          'Standardized text inconsistencies using UPDATE with LIKE patterns.',
+          'Converted date columns from text to proper DATE type using STR_TO_DATE().',
+          'Built CTEs and window functions to answer layoff trend and ranking questions.'
+        ],
+        mindmap: null
+      },
+
+      excel1: {
+        title: 'Excel — Auto Sales Data Cleaning',
+        overview: 'Cleaned a raw auto sales dataset in Excel to make it analysis-ready. The raw file had inconsistent date formats, duplicate records, and formatting issues that would cause errors in any analysis or visualization tool.',
+        tableauLink: null,
+        githubLink: 'https://github.com/MuhDataAnalyst/Excel-Cleaning-projects',
+        insights: [
+          'Identified and removed duplicate rows to ensure each order appeared only once in the dataset.',
+          'Fixed reversed date formats — the dataset mixed d/m/y and m/d/y entries which caused incorrect sorting and filtering.',
+          'Standardized date column to a consistent format ready for pivot tables and charts.',
+          'Prepared the cleaned dataset as a foundation for further analysis in Tableau or SQL.'
+        ],
+        tags: ['data cleaning', 'excel', 'date formatting', 'duplicates'],
+        process: [
+          'Reviewed the raw dataset to identify all inconsistencies before making any changes.',
+          'Used Remove Duplicates to identify and eliminate repeated rows.',
+          'Fixed mixed date formats by converting all entries to a single consistent format.',
+          'Verified the cleaned data by sorting and filtering to confirm all issues were resolved.',
+          'Saved the cleaned version separately to preserve the original raw file.'
+        ],
+        mindmap: null
+      },
+    };
+
+    // ── FILTER ──
+    function filterCards(tool, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.project-card').forEach(card => {
+        card.style.display = (tool === 'all' || card.dataset.tool === tool) ? 'block' : 'none';
+      });
+      closeDetail();
+    }
+
+    // ── DETAIL PANEL ──
+    let activeCard = null;
+
+    function openDetail(card) {
+      const panel = document.getElementById('detail-panel');
+      if (activeCard === card && panel.classList.contains('visible')) {
+        closeDetail(); return;
+      }
+      if (activeCard) activeCard.classList.remove('active');
+      card.classList.add('active');
+      activeCard = card;
+
+      const id = card.dataset.id;
+      const p  = projects[id];
+      if (!p) return;
+
+      // Title
+      document.getElementById('detail-title').textContent = p.title;
+
+      // Overview
+      document.getElementById('detail-overview-text').textContent = p.overview;
+      const linksEl = document.getElementById('detail-links');
+      linksEl.innerHTML = '';
+      if (p.tableauLink) {
+        linksEl.innerHTML += `<a href="${p.tableauLink}" target="_blank" class="tab-link tab-link-primary">→ View on Tableau Public</a>`;
+      }
+      if (p.githubLink) {
+        linksEl.innerHTML += `<a href="${p.githubLink}" target="_blank" class="tab-link tab-link-secondary">→ GitHub / File</a>`;
+      }
+
+      // Insights
+      const insightsList = document.getElementById('detail-insights-list');
+      insightsList.innerHTML = p.insights.map(i => `<li>${i}</li>`).join('');
+      const tagsEl = document.getElementById('detail-insight-tags');
+      tagsEl.innerHTML = p.tags.map(t => `<span class="insight-tag">${t}</span>`).join('');
+
+      // Process
+      const stepsEl = document.getElementById('detail-process-steps');
+      stepsEl.innerHTML = p.process.map((s, i) =>
+        `<div class="process-step">
+          <div class="step-num">${String(i+1).padStart(2,'0')}</div>
+          <div>${s}</div>
+        </div>`
+      ).join('');
+
+      // Mindmap
+      const mindmapEl = document.getElementById('detail-mindmap');
+       if (p.mindmap) {
+          mindmapEl.innerHTML = `
+            <div class="mindmap-box" id="mindmap-${id}">
+              <img src="images/${p.mindmap}" 
+           style="width:35%;border-radius:30px;cursor:zoom-in;" 
+           onclick="openLightbox('images/${p.mindmap}')" />
+          <small style="display:block;margin-top:6px;text-align:center;">click to enlarge</small>
+          </div>`;
+        } else {
+        mindmapEl.innerHTML = '';
+      }
+
+      panel.classList.add('visible');
+      switchTab('overview', document.querySelector('.dtab'));
+      setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 80);
+    }
+
+    function closeDetail() {
+      document.getElementById('detail-panel').classList.remove('visible');
+      if (activeCard) { activeCard.classList.remove('active'); activeCard = null; }
+    }
+
+    // ── TABS ──
+    function switchTab(tab, btn) {
+      document.querySelectorAll('.dtab').forEach(t => t.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      document.getElementById('tab-' + tab).classList.add('active');
+    }
+
+    function openLightbox(src) {
+        const lb = document.createElement('div');
+        lb.id = 'lightbox';
+        lb.style.cssText = `
+          position:fixed;inset:0;background:rgba(0,0,0,0.85);
+          display:flex;align-items:center;justify-content:center;
+          z-index:9999;cursor:zoom-out;padding:2rem;
+        `;
+        lb.innerHTML = `<img src="${src}" style="max-width:90vw;max-height:90vh;border-radius:8px;box-shadow:0 0 60px rgba(0,0,0,0.8);" />`;
+        lb.onclick = () => lb.remove();
+        document.body.appendChild(lb);
+    }
+  </script>
+
+</body>
+</html>
